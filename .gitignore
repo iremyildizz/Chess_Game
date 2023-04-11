@@ -132,3 +132,5 @@ Chess Game/Chess/x64/Debug/ChaseCase.obj
 Chess Game/Chess/x64/Debug/ChessCase.obj
 
 Chess Game/Chess/x64/Debug/ChessGrid.obj
+
+*.vsidx
