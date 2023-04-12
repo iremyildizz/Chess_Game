@@ -9,7 +9,7 @@ ChessGrid::ChessGrid(QWidget* parent) : QGridLayout(parent) {
 void ChessGrid::init() {
     for (int i = 0; i < lenght_; i++) {
         for (int j = 0; j < height_; j++) {
-            std::shared_ptr<ChessCase> button = std::make_shared<ChessCase>();
+            std::shared_ptr<ChessCase> button = std::make_shared<ChessCase>(i, j);
             button->setStyleSheet("background-color: rgba(255,182,193,1); margin: -10px;");
 
 
