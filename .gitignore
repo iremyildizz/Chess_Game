@@ -140,3 +140,5 @@ Chess Game/.vs/Chess/v17/ipch/AutoPCH/8f364a5d75f93fd6/PIECE.ipch
 Chess Game/Chess/x64/Debug/Piece.obj
 
 *.ipch
+
+Chess Game/Chess/x64/Debug/Game.obj

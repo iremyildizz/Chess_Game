@@ -9,7 +9,8 @@ public:
 	ChessCase(int newX, int newY, QWidget* parent = nullptr);
 	~ChessCase() = default;
 	void setPiece(std::unique_ptr<PieceAbs> piece);
-
+	int getX();
+	int getY();
 private:
 	int x_;
 	int y_;

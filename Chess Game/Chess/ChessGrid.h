@@ -9,6 +9,7 @@ public:
 	ChessGrid(QWidget* parent = nullptr);
 	~ChessGrid() = default;
 	void init();
+	void addPieces(std::vector<std::unique_ptr<PieceAbs>>);
 private:
 	std::vector<std::shared_ptr<ChessCase>> listOfCases_;
 	int lenght_ = 8;

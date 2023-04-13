@@ -6,6 +6,10 @@ QString PieceAbs::getIcon() {
 	return icon_;
 }
 
+int PieceAbs::getX() { return x_; }
+int PieceAbs::getY() { return y_; }
+void PieceAbs::setPos(int newX, int newY) { x_ = newX; y_ = newY; }
+
 King::King(Team team, int x, int y): PieceAbs(team, x, y) {
 	if (team == Team::Pink) {
 		name_ = "Pink King";

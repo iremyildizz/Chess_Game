@@ -10,6 +10,10 @@ public:
 	PieceAbs(Team team, int x, int y);
 	virtual ~PieceAbs() = default;
 	QString getIcon();
+	int getX();
+	int getY();
+	void setPos(int newX, int newY);
+
 protected:
 	std::string name_;
 	Team team_;

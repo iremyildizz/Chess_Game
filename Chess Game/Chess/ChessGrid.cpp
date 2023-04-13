@@ -29,3 +29,13 @@ void ChessGrid::init() {
         }
     }
 }
+void ChessGrid::addPieces(std::vector<std::unique_ptr<PieceAbs>> pieces) {
+    for (std::unique_ptr<PieceAbs>& piece : pieces) {
+        for (std::shared_ptr<ChessCase>& chessCase: listOfCases_) {
+            if (piece->getX() == chessCase->getX() && piece->getY() == chessCase->getY()) {
+                chessCase->setPiece(std::move(piece));
+                break;
+            }
+        }
+    }
+}
