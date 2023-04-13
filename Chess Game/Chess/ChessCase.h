@@ -5,12 +5,17 @@
 #include "Piece.h"
 
 class ChessCase : public QPushButton {
+	Q_OBJECT
 public:
 	ChessCase(int newX, int newY, QWidget* parent = nullptr);
 	~ChessCase() = default;
 	void setPiece(std::unique_ptr<PieceAbs> piece);
 	int getX();
 	int getY();
+
+public slots:
+	void handleButton();
+
 private:
 	int x_;
 	int y_;

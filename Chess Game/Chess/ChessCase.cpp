@@ -5,8 +5,8 @@ ChessCase::ChessCase(int newX, int newY, QWidget* parent): x_(newX), y_(newY), Q
     setIconSize(QSize(lenght_, height_));
     setMinimumSize(BUTTON_SIZE);
     setMaximumSize(BUTTON_SIZE);
+    connect(this, SIGNAL(clicked()), this, SLOT(handleButton()));
     //setText(QString(QString::number(x_)) + "," + (QString::number(y_)));
-    //setIcon(QIcon("./images/King_White.png"));
 }
 
 void ChessCase::setPiece(std::unique_ptr<PieceAbs> piece) {
@@ -15,3 +15,7 @@ void ChessCase::setPiece(std::unique_ptr<PieceAbs> piece) {
 }
 int ChessCase::getX() { return x_; }
 int ChessCase::getY() { return y_; }
+
+void ChessCase::handleButton() {
+    setText(QString(QString::number(x_)) + "," + (QString::number(y_)));
+}
