@@ -3,6 +3,7 @@
 #include <vector>
 #include "ChessCase.h"
 #include <memory>
+#include "Piece.h"
 class ChessGrid : public QGridLayout {
 public:
 	ChessGrid(QWidget* parent = nullptr);

@@ -12,7 +12,6 @@ void ChessGrid::init() {
             std::shared_ptr<ChessCase> button = std::make_shared<ChessCase>(i, j);
             button->setStyleSheet("background-color: rgba(255,182,193,1); margin: -10px;");
 
-
             if (i % 2 == 0) {
                 if (j % 2 == 0) {
                     button->setStyleSheet("background-color: rgba(255,250,240,1); margin: -10px;");
