@@ -16,7 +16,7 @@ int main(int argc, char *argv[])
     std::shared_ptr<Controller> controller = std::make_shared<Controller>();
     std::shared_ptr<ChessGrid> chessGrid = std::make_shared<ChessGrid>(controller);
     chessGrid->addPieces(game.test1());
-
+    controller->setGrid(chessGrid);
 
     // Create a widget
     QWidget* widget = new QWidget();
