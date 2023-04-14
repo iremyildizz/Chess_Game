@@ -4,13 +4,17 @@
 #include <QGridLayout>
 #include "ChessGrid.h"
 #include "Game.h"
+#include "ChessCase.h"
+#include "Controller.h"
+#include <memory>
 
 int main(int argc, char *argv[])
 {
     QApplication a(argc, argv);
     Chess w;
     Game game;
-    std::unique_ptr<ChessGrid> chessGrid = std::make_unique<ChessGrid>();
+    std::shared_ptr<Controller> controller = std::make_shared<Controller>();
+    std::shared_ptr<ChessGrid> chessGrid = std::make_shared<ChessGrid>(controller);
     chessGrid->addPieces(game.test1());
 
 

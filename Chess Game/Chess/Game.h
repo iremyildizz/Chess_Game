@@ -6,6 +6,6 @@ class Game {
 public:
 	Game() = default;
 	~Game() = default;
-	std::vector<std::unique_ptr<PieceAbs>> test1();
+	std::vector<std::shared_ptr<PieceAbs>> test1();
 private:
 };

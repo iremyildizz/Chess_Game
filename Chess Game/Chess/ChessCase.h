@@ -4,14 +4,18 @@
 #include <memory>
 #include "Piece.h"
 
+class Controller;
 class ChessCase : public QPushButton {
 	Q_OBJECT
 public:
-	ChessCase(int newX, int newY, QWidget* parent = nullptr);
+	ChessCase(int newX, int newY, std::shared_ptr<Controller> controller, QWidget* parent = nullptr);
+	ChessCase() = default;
 	~ChessCase() = default;
-	void setPiece(std::unique_ptr<PieceAbs> piece);
+	void setPiece(std::shared_ptr<PieceAbs> piece);
+	void deletePiece();
 	int getX();
 	int getY();
+	std::shared_ptr<PieceAbs> getPiece();
 
 public slots:
 	void handleButton();
@@ -21,5 +25,6 @@ private:
 	int y_;
 	const int lenght_ = 90;
 	const int height_ = 90;
-	std::unique_ptr<PieceAbs> piece_ = nullptr;
+	std::shared_ptr<PieceAbs> piece_ = nullptr;
+	std::shared_ptr<Controller> controller_ = nullptr;
 };

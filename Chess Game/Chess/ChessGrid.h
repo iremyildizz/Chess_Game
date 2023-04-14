@@ -3,15 +3,18 @@
 #include <vector>
 #include "ChessCase.h"
 #include <memory>
-#include "Piece.h"
+
+class Controller;
 class ChessGrid : public QGridLayout {
 public:
-	ChessGrid(QWidget* parent = nullptr);
+	ChessGrid(std::shared_ptr<Controller> controller, QWidget* parent = nullptr);
 	~ChessGrid() = default;
 	void init();
-	void addPieces(std::vector<std::unique_ptr<PieceAbs>>);
+	void addPieces(std::vector<std::shared_ptr<PieceAbs>>);
 private:
 	std::vector<std::shared_ptr<ChessCase>> listOfCases_;
+	std::vector<std::shared_ptr<PieceAbs>> listOfPieces_;
 	int lenght_ = 8;
 	int height_ = 8;
+	std::shared_ptr<Controller> controller_ = nullptr;
 };
