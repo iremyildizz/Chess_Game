@@ -13,14 +13,13 @@ ChessCase::ChessCase(int newX, int newY, std::shared_ptr<Controller> controller,
 void ChessCase::setPiece(std::shared_ptr<PieceAbs> piece) {
     piece_ = piece;
     setIcon(QIcon(piece_->getIcon()));
-    /*piece->setPos(x_, y_);*/
+    piece->setPos(x_, y_);
 }
 int ChessCase::getX() { return x_; }
 int ChessCase::getY() { return y_; }
 
 void ChessCase::handleButton() {
-    /*std::shared_ptr<ChessCase> selfPtr(this);
-    controller_->click(selfPtr);*/
+    controller_->click(this);
 }
 
 std::shared_ptr<PieceAbs> ChessCase::getPiece() {
