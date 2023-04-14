@@ -16,6 +16,9 @@ public:
 	int getX();
 	int getY();
 	std::shared_ptr<PieceAbs> getPiece();
+	void changeColor(QString colour);
+	void setBaseColour(QString colour);
+	void changeToBaseColour();
 
 public slots:
 	void handleButton();
@@ -27,4 +30,5 @@ private:
 	const int height_ = 90;
 	std::shared_ptr<PieceAbs> piece_ = nullptr;
 	std::shared_ptr<Controller> controller_ = nullptr;
+	QString colour_;
 };

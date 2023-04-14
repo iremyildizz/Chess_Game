@@ -1,6 +1,7 @@
 #include "ChessGrid.h"
 #include "Controller.h"
 
+Colours c; 
 ChessGrid::ChessGrid(std::shared_ptr<Controller> controller, QWidget* parent) :controller_(controller), QGridLayout(parent) {
     setSizeConstraint(QLayout::SetMinAndMaxSize);
     init();
@@ -10,20 +11,20 @@ void ChessGrid::init() {
     for (int i = 0; i < lenght_; i++) {
         for (int j = 0; j < height_; j++) {
             std::shared_ptr<ChessCase> button = std::make_shared<ChessCase>(i, j, controller_);
-            button->setStyleSheet("background-color: rgba(255,182,193,1); margin: -10px;");
+            button->setBaseColour(c.casePink);
 
             if (i % 2 == 0) {
                 if (j % 2 == 0) {
-                    button->setStyleSheet("background-color: rgba(255,250,240,1); margin: -10px;");
+                    button->setBaseColour(c.caseYellow);
                 }
             }
             else {
                 if (j % 2 != 0) {
-                    button->setStyleSheet("background-color: rgba(255,250,240,1);"
-                                          "margin: -10px;"
-                                         );
+                    button->setBaseColour(c.caseYellow);
+
                 }
             }
+            button->changeToBaseColour();
             addWidget(button.get(), i, j, 1, 1);
             listOfCases_.push_back(button);
         }

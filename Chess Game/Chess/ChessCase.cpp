@@ -30,3 +30,10 @@ void ChessCase::deletePiece() {
     setIcon(QIcon(""));
     piece_ = nullptr;
 }
+void ChessCase::changeColor(QString colour) {
+    setStyleSheet("background-color:" + (colour) + "; margin: -10px;");
+}
+
+void ChessCase::setBaseColour(QString colour) { colour_ = colour; }
+
+void ChessCase::changeToBaseColour() { changeColor(colour_); }

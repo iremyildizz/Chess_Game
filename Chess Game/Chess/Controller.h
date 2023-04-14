@@ -3,6 +3,12 @@
 #include "ChessGrid.h"
 #include <memory>
 
+struct Colours {
+	const QString casePink = "rgba(255, 182, 193, 1)";
+	const QString caseYellow = "rgba(255, 250, 240, 1)";
+	const QString selectedCase = "rgba(218, 112, 214, 1)";
+};
+
 class Controller {
 public:
 	Controller();
