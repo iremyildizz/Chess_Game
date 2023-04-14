@@ -41,3 +41,4 @@ void ChessGrid::addPieces(std::vector<std::shared_ptr<PieceAbs>> pieces) {
         }
     }
 }
+std::vector<std::shared_ptr<ChessCase>> ChessGrid::getListOfCases() { return listOfCases_; }

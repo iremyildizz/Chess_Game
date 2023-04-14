@@ -9,6 +9,7 @@ QString PieceAbs::getIcon() {
 int PieceAbs::getX() { return x_; }
 int PieceAbs::getY() { return y_; }
 void PieceAbs::setPos(int newX, int newY) { x_ = newX; y_ = newY; }
+bool PieceAbs::isValidMove(int x, int y) { return true; }
 
 King::King(Team team, int x, int y): PieceAbs(team, x, y) {
 	if (team == Team::Pink) {
@@ -21,6 +22,8 @@ King::King(Team team, int x, int y): PieceAbs(team, x, y) {
 	}
 	
 }
+bool King::isValidMove(int x, int y) { return true; }
+
 Bishop::Bishop(Team team, int x, int y) : PieceAbs(team, x, y) {
 	if (team == Team::Pink) {
 		name_ = "Pink Bishop";
@@ -32,6 +35,8 @@ Bishop::Bishop(Team team, int x, int y) : PieceAbs(team, x, y) {
 	}
 
 }
+bool Bishop::isValidMove(int x, int y) { return true; }
+
 Rook::Rook(Team team, int x, int y) : PieceAbs(team, x, y) {
 	if (team == Team::Pink) {
 		name_ = "Pink Rook";
@@ -42,4 +47,8 @@ Rook::Rook(Team team, int x, int y) : PieceAbs(team, x, y) {
 		icon_ = "./images/Rook_White.png";
 	}
 
+}
+
+bool Rook::isValidMove(int x, int y) {
+	return(x_ == x || y_ == y);
 }

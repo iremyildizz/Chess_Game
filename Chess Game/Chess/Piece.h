@@ -13,28 +13,31 @@ public:
 	int getX();
 	int getY();
 	void setPos(int newX, int newY);
+	virtual bool isValidMove(int x, int y);
 
 protected:
 	std::string name_;
 	Team team_;
 	QString icon_;
-	std::function<bool(int x,int y)> movementRule_;
-	int x_;
-	int y_;
+	int x_ = 0;
+	int y_ = 0;
 };
 
 class King : public PieceAbs {
 public:
 	King(Team team, int x, int y);
+	bool isValidMove(int x, int y);
 protected:
 };
 
 class Bishop : public PieceAbs {
 public:
 	Bishop(Team team, int x, int y);
+	bool isValidMove(int x, int y);
 };
 
 class Rook : public PieceAbs {
 public:
 	Rook(Team team, int x, int y);
+	bool isValidMove(int x, int y);
 };

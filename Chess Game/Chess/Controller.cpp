@@ -14,6 +14,10 @@ void Controller::click(ChessCase* button) {
 			chosenPiece_ = button->getPiece();
 			chosenCase_ = button;
 			chosenCase_->changeColor(colour.selectedCase);
+			for (std::shared_ptr<ChessCase> button : grid_->getListOfCases()) {
+				if(button.get() != chosenCase_ && chosenPiece_->isValidMove(button->getX(), button->getY()))
+					button->changeColor(colour.possibleCase);
+			}
 		}
 	}
 	else {
@@ -23,6 +27,10 @@ void Controller::click(ChessCase* button) {
 			chosenCase_->changeToBaseColour();
 			chosenPiece_ = nullptr;
 			chosenCase_ = nullptr;
+			for (std::shared_ptr<ChessCase> button : grid_->getListOfCases()) {
+				button->changeToBaseColour();
+			}
 		}
 	}
 }
+void Controller::setGrid(std::shared_ptr<ChessGrid> grid) { grid_ = grid; }
