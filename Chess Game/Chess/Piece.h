@@ -29,3 +29,12 @@ public:
 protected:
 };
 
+class Bishop : public PieceAbs {
+public:
+	Bishop(Team team, int x, int y);
+};
+
+class Rook : public PieceAbs {
+public:
+	Rook(Team team, int x, int y);
+};

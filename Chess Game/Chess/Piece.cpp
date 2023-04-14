@@ -21,3 +21,25 @@ King::King(Team team, int x, int y): PieceAbs(team, x, y) {
 	}
 	
 }
+Bishop::Bishop(Team team, int x, int y) : PieceAbs(team, x, y) {
+	if (team == Team::Pink) {
+		name_ = "Pink Bishop";
+		icon_ = "./images/Bishop_Black.png";
+	}
+	else {
+		name_ = "White Bishop";
+		icon_ = "./images/Bishop_White.png";
+	}
+
+}
+Rook::Rook(Team team, int x, int y) : PieceAbs(team, x, y) {
+	if (team == Team::Pink) {
+		name_ = "Pink Rook";
+		icon_ = "./images/Rook_Black.png";
+	}
+	else {
+		name_ = "White Rook";
+		icon_ = "./images/Rook_White.png";
+	}
+
+}
