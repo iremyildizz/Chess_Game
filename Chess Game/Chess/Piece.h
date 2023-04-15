@@ -1,3 +1,11 @@
+/**
+* Chess Game.
+* \file   Piece.h
+* \author Irem Yildiz
+* \date   14 avril 2023
+* Créé le 10 avril 2023
+*/
+
 #pragma once
 #include <string>
 #include <functional>

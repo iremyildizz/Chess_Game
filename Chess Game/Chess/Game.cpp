@@ -1,3 +1,10 @@
+/**
+* Chess Game.
+* \file   Game.cpp
+* \author Irem Yildiz
+* \date   14 avril 2023
+* Créé le 10 avril 2023
+*/
 #include "Game.h"
 
 std::vector<std::shared_ptr<PieceAbs>> Game::test1() {

@@ -1,6 +1,14 @@
 #pragma once
 #include <QPushButton>
 #include <Qsize>
+/**
+* Chess Game.
+* \file   ChessCase.h
+* \author Irem Yildiz
+* \date   14 avril 2023
+* Créé le 10 avril 2023
+*/
+
 #include <memory>
 #include "Piece.h"
 

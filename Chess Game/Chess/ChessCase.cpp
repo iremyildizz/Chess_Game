@@ -1,3 +1,11 @@
+/**
+* Chess Game.
+* \file   ChessCase.cpp
+* \author Irem Yildiz
+* \date   14 avril 2023
+* Créé le 10 avril 2023
+*/
+
 #include "ChessCase.h"
 #include "Controller.h"
 

@@ -1,3 +1,11 @@
+/**
+* Chess Game.
+* \file   Controller.cpp
+* \author Irem Yildiz
+* \date   14 avril 2023
+* Créé le 10 avril 2023
+*/
+
 #include "Controller.h"
 
 Colours colour;
