@@ -21,4 +21,5 @@ private:
 	std::shared_ptr<PieceAbs> chosenPiece_ = nullptr;
 	ChessCase* chosenCase_ = nullptr;
 	std::shared_ptr<ChessGrid> grid_ = nullptr;
+	std::vector<std::shared_ptr<ChessCase>> possibleCases_;
 };

@@ -11,6 +11,11 @@ int PieceAbs::getX() { return x_; }
 int PieceAbs::getY() { return y_; }
 void PieceAbs::setPos(int newX, int newY) { x_ = newX; y_ = newY; }
 bool PieceAbs::isValidMove(int x, int y) { return true; }
+bool PieceAbs::isSameTeam(std::shared_ptr<PieceAbs> piece) {
+	if(piece != nullptr)
+		return (team_ == piece->team_); 
+	return false;
+}
 
 King::King(Team team, int x, int y): PieceAbs(team, x, y) {
 	if (team == Team::Pink) {

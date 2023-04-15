@@ -14,6 +14,7 @@ public:
 	int getY();
 	void setPos(int newX, int newY);
 	virtual bool isValidMove(int x, int y);
+	bool isSameTeam(std::shared_ptr<PieceAbs> piece);
 
 protected:
 	std::string name_;
