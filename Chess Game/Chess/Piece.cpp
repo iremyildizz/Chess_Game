@@ -22,9 +22,13 @@ King::King(Team team, int x, int y): PieceAbs(team, x, y) {
 	}
 	
 }
+<<<<<<< HEAD
 bool King::isValidMove(int x, int y) { 
 	return ((x <= x_ + 1 && x >= x_ - 1) && (y <= y_ + 1 && y >= y_ - 1)); 
 }
+=======
+bool King::isValidMove(int x, int y) { return true; }
+>>>>>>> master
 
 Bishop::Bishop(Team team, int x, int y) : PieceAbs(team, x, y) {
 	if (team == Team::Pink) {
