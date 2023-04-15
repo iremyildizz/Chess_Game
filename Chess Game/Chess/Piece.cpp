@@ -1,4 +1,5 @@
 #include "Piece.h"
+#include <cmath>
 
 PieceAbs::PieceAbs(Team team, int x, int y) : team_(team), x_(x), y_(y){}
 
@@ -22,13 +23,10 @@ King::King(Team team, int x, int y): PieceAbs(team, x, y) {
 	}
 	
 }
-<<<<<<< HEAD
+
 bool King::isValidMove(int x, int y) { 
 	return ((x <= x_ + 1 && x >= x_ - 1) && (y <= y_ + 1 && y >= y_ - 1)); 
 }
-=======
-bool King::isValidMove(int x, int y) { return true; }
->>>>>>> master
 
 Bishop::Bishop(Team team, int x, int y) : PieceAbs(team, x, y) {
 	if (team == Team::Pink) {
@@ -41,7 +39,9 @@ Bishop::Bishop(Team team, int x, int y) : PieceAbs(team, x, y) {
 	}
 
 }
-bool Bishop::isValidMove(int x, int y) { return true; }
+bool Bishop::isValidMove(int x, int y) { 
+	return (std::abs(x - x_) == std::abs(y - y_));
+}
 
 Rook::Rook(Team team, int x, int y) : PieceAbs(team, x, y) {
 	if (team == Team::Pink) {
