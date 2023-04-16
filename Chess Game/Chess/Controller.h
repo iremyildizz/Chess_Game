@@ -12,10 +12,10 @@
 #include <memory>
 
 struct Colours {
-	const QString casePink = "rgba(255, 182, 193, 1)";
-	const QString caseYellow = "rgba(255, 250, 240, 1)";
-	const QString selectedCase = "rgba(218, 112, 214, 1)";
-	const QString possibleCase = "rgba(147, 112, 219, 0.5)";
+	const QString casePink = "rgba(247, 202, 201, 1)";
+	const QString caseYellow = "rgba(255, 255, 240, 1)";
+	const QString selectedCase = "rgba(133, 114, 145, 1)";
+	const QString possibleCase = "rgba(192, 165, 209, 1)";
 };
 
 class Controller {
