@@ -13,6 +13,8 @@ Colours c;
 ChessGrid::ChessGrid(std::shared_ptr<Controller> controller, QWidget* parent) :controller_(controller), QGridLayout(parent) {
     setSizeConstraint(QLayout::SetMinAndMaxSize);
     init();
+    setHorizontalSpacing(0);
+    setVerticalSpacing(0);
 };
 
 void ChessGrid::init() {

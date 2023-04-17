@@ -27,6 +27,7 @@ public:
 	void changeColor(QString colour);
 	void setBaseColour(QString colour);
 	void changeToBaseColour();
+	QString getColour();
 
 public slots:
 	void handleButton();

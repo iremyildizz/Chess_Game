@@ -25,6 +25,8 @@ bool PieceAbs::isSameTeam(std::shared_ptr<PieceAbs> piece) {
 	return false;
 }
 
+Team PieceAbs::getTeam() { return team_; }
+
 King::King(Team team, int x, int y): PieceAbs(team, x, y) {
 	if (team == Team::Pink) {
 		name_ = "Pink King";
@@ -71,3 +73,4 @@ Rook::Rook(Team team, int x, int y) : PieceAbs(team, x, y) {
 bool Rook::isValidMove(int x, int y) {
 	return(x_ == x || y_ == y);
 }
+

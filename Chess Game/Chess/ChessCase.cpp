@@ -45,3 +45,4 @@ void ChessCase::changeColor(QString colour) {
 void ChessCase::setBaseColour(QString colour) { colour_ = colour; }
 
 void ChessCase::changeToBaseColour() { changeColor(colour_); }
+QString ChessCase::getColour() { return colour_; }

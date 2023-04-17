@@ -24,7 +24,10 @@ void Controller::click(ChessCase* button) {
 			chosenCase_->changeColor(colour.selectedCase);
 			for (std::shared_ptr<ChessCase> button : grid_->getListOfCases()) {
 				if(button.get() != chosenCase_ && chosenPiece_->isValidMove(button->getX(), button->getY())) {
-					button->changeColor(colour.possibleCase);
+					button->changeColor(colour.possibleCaseYellow);
+					if (button->getColour() == colour.casePink) {
+						button->changeColor(colour.possibleCasePink);
+					}	
 					possibleCases_.push_back(button);
 				}
 			}
