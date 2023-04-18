@@ -29,7 +29,6 @@ void Controller::click(ChessCase* button) {
 					button->changeColor(colour.possibleCasePink);
 				}	
 			}
-			//add filters
 		}
 	}
 	else {
