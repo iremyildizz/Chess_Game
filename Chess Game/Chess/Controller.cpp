@@ -7,8 +7,8 @@
 */
 
 #include "Controller.h"
+using namespace colors;
 
-Colours colour;
 Controller::Controller() {
 
 }
@@ -21,12 +21,12 @@ void Controller::click(ChessCase* button) {
 		if (button->getPiece() != nullptr) {
 			chosenPiece_ = button->getPiece();
 			chosenCase_ = button;
-			chosenCase_->changeColor(colour.selectedCase);
+			chosenCase_->changeColor(selectedCase);
 			obstacleFilter_();
 			for (std::shared_ptr<ChessCase> button : possibleCases_) {
-				button->changeColor(colour.possibleCaseYellow);
-				if (button->getColour() == colour.casePink) {
-					button->changeColor(colour.possibleCasePink);
+				button->changeColor(possibleCaseYellow);
+				if (button->getColour() == casePink) {
+					button->changeColor(possibleCasePink);
 				}	
 			}
 		}

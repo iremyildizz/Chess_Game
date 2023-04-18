@@ -11,14 +11,14 @@
 #include "ChessGrid.h"
 #include <memory>
 
-struct Colours {
+namespace colors {
 	const QString casePink = "rgba(247, 202, 201, 1)";
 	const QString caseYellow = "rgba(255, 255, 240, 1)";
 	const QString selectedCase = "rgba(83, 66, 92, 1)";
 	const QString possibleCase = "rgba(192, 165, 209, 1)";
 	const QString possibleCasePink = "rgba(192, 165, 209, 1)";
 	const QString possibleCaseYellow = "rgba(222, 190, 240, 1)";
-};
+}
 
 class Controller {
 public:

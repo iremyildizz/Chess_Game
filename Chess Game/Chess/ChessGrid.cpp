@@ -9,7 +9,8 @@
 #include "ChessGrid.h"
 #include "Controller.h"
 
-Colours c; 
+using namespace colors;
+
 ChessGrid::ChessGrid(std::shared_ptr<Controller> controller, QWidget* parent) :controller_(controller), QGridLayout(parent) {
     setSizeConstraint(QLayout::SetMinAndMaxSize);
     init();
@@ -25,16 +26,16 @@ void ChessGrid::init() {
         std::vector<std::shared_ptr<ChessCase>> caseRow;
         for (int j = 0; j < height_; j++) {
             std::shared_ptr<ChessCase> button = std::make_shared<ChessCase>(i, j, controller_);
-            button->setBaseColour(c.casePink);
+            button->setBaseColour(casePink);
 
             if (i % 2 == 0) {
                 if (j % 2 == 0) {
-                    button->setBaseColour(c.caseYellow);
+                    button->setBaseColour(caseYellow);
                 }
             }
             else {
                 if (j % 2 != 0) {
-                    button->setBaseColour(c.caseYellow);
+                    button->setBaseColour(caseYellow);
 
                 }
             }
