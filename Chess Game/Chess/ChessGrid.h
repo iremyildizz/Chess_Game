@@ -19,9 +19,12 @@ public:
 	~ChessGrid() = default;
 	void init();
 	void addPieces(std::vector<std::shared_ptr<PieceAbs>>);
-	std::vector<std::shared_ptr<ChessCase>> getListOfCases();
+	std::shared_ptr<ChessCase> findCase(int x, int y);
+	std::vector<std::vector<std::shared_ptr<ChessCase>>> getListOfCases();
+	int getLenght();
+	int getHeight();
 private:
-	std::vector<std::shared_ptr<ChessCase>> listOfCases_;
+	std::vector<std::vector<std::shared_ptr<ChessCase>>> listOfCases_;
 	std::vector<std::shared_ptr<PieceAbs>> listOfPieces_;
 	int lenght_ = 8;
 	int height_ = 8;

@@ -28,6 +28,8 @@ public:
 	void setGrid(std::shared_ptr<ChessGrid> grid);
 
 private:
+	void obstacleFilter_();
+	bool filterAdder_(int x, int y);
 	std::shared_ptr<PieceAbs> chosenPiece_ = nullptr;
 	ChessCase* chosenCase_ = nullptr;
 	std::shared_ptr<ChessGrid> grid_ = nullptr;
