@@ -77,3 +77,17 @@ bool Rook::isValidMove(int x, int y) {
 	return(x_ == x || y_ == y);
 }
 
+Queen::Queen(Team team, int x, int y) : PieceAbs(team, x, y) {
+	if (team == Team::Lilac) {
+		name_ = "Lilac Queen";
+		icon_ = lilacQueenIcon;
+	}
+	else {
+		name_ = "Pink Queen";
+		icon_ = pinkQueenIcon;
+	}
+}
+
+bool Queen::isValidMove(int x, int y) {
+	return((x_ == x || y_ == y) || (std::abs(x - x_) == std::abs(y - y_)) || ((x <= x_ + 1 && x >= x_ - 1) && (y <= y_ + 1 && y >= y_ - 1)));
+}

@@ -20,6 +20,8 @@ namespace icons {
 	const QString pinkRookIcon = "./images/Rook_Pink.png";
 	const QString lilacBishopIcon = "./images/Bishop_Lilac.png";
 	const QString pinkBishopIcon = "./images/Bishop_Pink.png";
+	const QString lilacQueenIcon = "./images/Queen_Lilac.png";
+	const QString pinkQueenIcon = "./images/Queen_Pink.png";
 }
 
 class PieceAbs {
@@ -58,5 +60,11 @@ public:
 class Rook : public PieceAbs {
 public:
 	Rook(Team team, int x, int y);
+	bool isValidMove(int x, int y);
+};
+
+class Queen : public PieceAbs {
+public:
+	Queen(Team team, int x, int y);
 	bool isValidMove(int x, int y);
 };

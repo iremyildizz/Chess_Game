@@ -18,6 +18,8 @@ std::vector<std::shared_ptr<PieceAbs>> Game::test1() {
 	game.push_back(std::make_unique<Rook>(Team::Lilac, 0, 7));
 	game.push_back(std::make_unique<Rook>(Team::Pink, 7, 0));
 	game.push_back(std::make_unique<Rook>(Team::Pink, 7, 7));
+	game.push_back(std::make_unique<Queen>(Team::Lilac, 0, 3));
+	game.push_back(std::make_unique<Queen>(Team::Pink, 7, 3));
 
 	return game;
 }
