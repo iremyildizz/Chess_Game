@@ -9,6 +9,8 @@
 #include "Piece.h"
 #include <cmath>
 
+using namespace icons;
+
 PieceAbs::PieceAbs(Team team, int x, int y) : team_(team), x_(x), y_(y){}
 
 QString PieceAbs::getIcon() {
@@ -27,16 +29,17 @@ bool PieceAbs::isSameTeam(std::shared_ptr<PieceAbs> piece) {
 
 Team PieceAbs::getTeam() { return team_; }
 
-King::King(Team team, int x, int y): PieceAbs(team, x, y) {
-	if (team == Team::Pink) {
-		name_ = "Pink King";
-		icon_ = "./images/King_Black.png";
+King::King(Team team, int x, int y) : PieceAbs(team, x, y) {
+
+	if (team == Team::Lilac) {
+		name_ = "Lilac King";
+		icon_ = lilacKingIcon;
 	}
 	else {
-		name_ = "White King";
-		icon_ = "./images/King_White.png";
+		name_ = "Pink King";
+		icon_ = pinkKingIcon;
 	}
-	
+
 }
 
 bool King::isValidMove(int x, int y) { 
@@ -44,13 +47,13 @@ bool King::isValidMove(int x, int y) {
 }
 
 Bishop::Bishop(Team team, int x, int y) : PieceAbs(team, x, y) {
-	if (team == Team::Pink) {
-		name_ = "Pink Bishop";
-		icon_ = "./images/Bishop_Black.png";
+	if (team == Team::Lilac) {
+		name_ = "Lilac Bishop";
+		icon_ = lilacBishopIcon;
 	}
 	else {
-		name_ = "White Bishop";
-		icon_ = "./images/Bishop_White.png";
+		name_ = "Pink Bishop";
+		icon_ = pinkBishopIcon;
 	}
 
 }
@@ -59,13 +62,13 @@ bool Bishop::isValidMove(int x, int y) {
 }
 
 Rook::Rook(Team team, int x, int y) : PieceAbs(team, x, y) {
-	if (team == Team::Pink) {
-		name_ = "Pink Rook";
-		icon_ = "./images/Rook_Black.png";
+	if (team == Team::Lilac) {
+		name_ = "Lilac Rook";
+		icon_ = lilacRookIcon;
 	}
 	else {
-		name_ = "White Rook";
-		icon_ = "./images/Rook_White.png";
+		name_ = "Pink Rook";
+		icon_ = pinkRookIcon;
 	}
 
 }

@@ -11,7 +11,16 @@
 #include <functional>
 #include <qstring.h>
 
-enum class Team {Pink, White};
+enum class Team {Lilac, Pink};
+
+namespace icons {
+	const QString lilacKingIcon = "./images/King_Lilac.png";
+	const QString pinkKingIcon = "./images/King_Pink.png";
+	const QString lilacRookIcon = "./images/Rook_Lilac.png";
+	const QString pinkRookIcon = "./images/Rook_Pink.png";
+	const QString lilacBishopIcon = "./images/Bishop_Lilac.png";
+	const QString pinkBishopIcon = "./images/Bishop_Pink.png";
+}
 
 class PieceAbs {
 public:
