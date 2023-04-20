@@ -26,6 +26,7 @@ bool PieceAbs::isSameTeam(std::shared_ptr<PieceAbs> piece) {
 		return (team_ == piece->team_); 
 	return false;
 }
+std::string PieceAbs::getType() { return "Piece Abs"; }
 
 Team PieceAbs::getTeam() { return team_; }
 
@@ -46,6 +47,8 @@ bool King::isValidMove(int x, int y) {
 	return ((x <= x_ + 1 && x >= x_ - 1) && (y <= y_ + 1 && y >= y_ - 1)); 
 }
 
+std::string King::getType() { return "King"; }
+
 Bishop::Bishop(Team team, int x, int y) : PieceAbs(team, x, y) {
 	if (team == Team::Lilac) {
 		name_ = "Lilac Bishop";
@@ -60,6 +63,8 @@ Bishop::Bishop(Team team, int x, int y) : PieceAbs(team, x, y) {
 bool Bishop::isValidMove(int x, int y) { 
 	return (std::abs(x - x_) == std::abs(y - y_));
 }
+
+std::string Bishop::getType() { return "Bishop"; }
 
 Rook::Rook(Team team, int x, int y) : PieceAbs(team, x, y) {
 	if (team == Team::Lilac) {
@@ -77,6 +82,8 @@ bool Rook::isValidMove(int x, int y) {
 	return(x_ == x || y_ == y);
 }
 
+std::string Rook::getType() { return "Rook"; }
+
 Queen::Queen(Team team, int x, int y) : PieceAbs(team, x, y) {
 	if (team == Team::Lilac) {
 		name_ = "Lilac Queen";
@@ -91,3 +98,22 @@ Queen::Queen(Team team, int x, int y) : PieceAbs(team, x, y) {
 bool Queen::isValidMove(int x, int y) {
 	return((x_ == x || y_ == y) || (std::abs(x - x_) == std::abs(y - y_)) || ((x <= x_ + 1 && x >= x_ - 1) && (y <= y_ + 1 && y >= y_ - 1)));
 }
+
+std::string Queen::getType() { return "Queen"; }
+
+Knight::Knight(Team team, int x, int y) : PieceAbs(team, x, y) {
+	if (team == Team::Lilac) {
+		name_ = "Lilac Knight";
+		icon_ = lilacKnightIcon;
+	}
+	else {
+		name_ = "Pink Knight";
+		icon_ = pinkKnightIcon;
+	}
+}
+
+bool Knight::isValidMove(int x, int y) {
+	return((std::abs(x_ - x) == 2 || std::abs(y_ - y) == 2) && (std::abs(x_ - x) == 1 || std::abs(y_ - y) == 1));
+}
+
+std::string Knight::getType() { return "Knight"; }

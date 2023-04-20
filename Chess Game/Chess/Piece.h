@@ -22,6 +22,8 @@ namespace icons {
 	const QString pinkBishopIcon = "./images/Bishop_Pink.png";
 	const QString lilacQueenIcon = "./images/Queen_Lilac.png";
 	const QString pinkQueenIcon = "./images/Queen_Pink.png";
+	const QString lilacKnightIcon = "./images/Knight_Lilac.png";
+	const QString pinkKnightIcon = "./images/Knight_Pink.png";
 }
 
 class PieceAbs {
@@ -35,6 +37,7 @@ public:
 	virtual bool isValidMove(int x, int y);
 	bool isSameTeam(std::shared_ptr<PieceAbs> piece);
 	Team getTeam();
+	virtual std::string getType();
 
 protected:
 	std::string name_;
@@ -48,6 +51,7 @@ class King : public PieceAbs {
 public:
 	King(Team team, int x, int y);
 	bool isValidMove(int x, int y);
+	std::string getType() override;
 protected:
 };
 
@@ -55,16 +59,26 @@ class Bishop : public PieceAbs {
 public:
 	Bishop(Team team, int x, int y);
 	bool isValidMove(int x, int y);
+	std::string getType() override;
 };
 
 class Rook : public PieceAbs {
 public:
 	Rook(Team team, int x, int y);
 	bool isValidMove(int x, int y);
+	std::string getType() override;
 };
 
 class Queen : public PieceAbs {
 public:
 	Queen(Team team, int x, int y);
 	bool isValidMove(int x, int y);
+	std::string getType() override;
+};
+
+class Knight : public PieceAbs {
+public:
+	Knight(Team team, int x, int y);
+	bool isValidMove(int x, int y);
+	std::string getType() override;
 };

@@ -7,6 +7,7 @@
 */
 
 #include "Controller.h"
+#include <qmessagebox.h>
 using namespace colors;
 
 Controller::Controller() {
@@ -22,7 +23,18 @@ void Controller::click(ChessCase* button) {
 			chosenPiece_ = button->getPiece();
 			chosenCase_ = button;
 			chosenCase_->changeColor(selectedCase);
-			obstacleFilter_();
+			if (chosenPiece_->getType() == "Knight") {
+				for (auto line : grid_->getListOfCases()) {
+					for (std::shared_ptr<ChessCase> button : line) {
+						if (chosenPiece_->isValidMove(button->getX(), button->getY()))
+							possibleCases_.push_back(button);
+					}
+				}
+
+			}
+			else { 
+				obstacleFilter_();
+			}
 			for (std::shared_ptr<ChessCase> button : possibleCases_) {
 				button->changeColor(possibleCaseYellow);
 				if (button->getColour() == casePink) {
