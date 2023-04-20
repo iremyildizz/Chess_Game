@@ -14,16 +14,16 @@
 enum class Team {Lilac, Pink};
 
 namespace icons {
-	const QString lilacKingIcon = "./images/King_Lilac.png";
-	const QString pinkKingIcon = "./images/King_Pink.png";
-	const QString lilacRookIcon = "./images/Rook_Lilac.png";
-	const QString pinkRookIcon = "./images/Rook_Pink.png";
-	const QString lilacBishopIcon = "./images/Bishop_Lilac.png";
-	const QString pinkBishopIcon = "./images/Bishop_Pink.png";
-	const QString lilacQueenIcon = "./images/Queen_Lilac.png";
-	const QString pinkQueenIcon = "./images/Queen_Pink.png";
-	const QString lilacKnightIcon = "./images/Knight_Lilac.png";
-	const QString pinkKnightIcon = "./images/Knight_Pink.png";
+	const QString lilacKingIcon = "./images/King_Lilac.png";			/*photo by Wikipedia, edited by Irem Yildiz*/
+	const QString pinkKingIcon = "./images/King_Pink.png";				/*photo by Wikipedia, edited by Irem Yildiz*/
+	const QString lilacRookIcon = "./images/Rook_Lilac.png";			/*photo by Wikipedia, edited by Irem Yildiz*/
+	const QString pinkRookIcon = "./images/Rook_Pink.png";				/*photo by Wikipedia, edited by Irem Yildiz*/
+	const QString lilacBishopIcon = "./images/Bishop_Lilac.png";		/*photo by Wikipedia, edited by Irem Yildiz*/
+	const QString pinkBishopIcon = "./images/Bishop_Pink.png";			/*photo by Wikipedia, edited by Irem Yildiz*/
+	const QString lilacQueenIcon = "./images/Queen_Lilac.png";			/*photo by Wikipedia, edited by Irem Yildiz*/
+	const QString pinkQueenIcon = "./images/Queen_Pink.png";			/*photo by Wikipedia, edited by Irem Yildiz*/
+	const QString lilacKnightIcon = "./images/Knight_Lilac.png";		/*photo by Wikipedia, edited by Irem Yildiz, idea by Berk Yurteri*/
+	const QString pinkKnightIcon = "./images/Knight_Pink.png";			/*photo by Wikipedia, edited by Irem Yildiz, idea by Berk Yurteri*/
 }
 
 class PieceAbs {
