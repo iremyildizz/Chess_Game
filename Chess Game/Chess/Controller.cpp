@@ -23,18 +23,7 @@ void Controller::click(ChessCase* button) {
 			chosenPiece_ = button->getPiece();
 			chosenCase_ = button;
 			chosenCase_->changeColor(selectedCase);
-			if (chosenPiece_->getType() == "Knight") {
-				for (auto line : grid_->getListOfCases()) {
-					for (std::shared_ptr<ChessCase> button : line) {
-						if (chosenPiece_->isValidMove(button->getX(), button->getY()))
-							possibleCases_.push_back(button);
-					}
-				}
-
-			}
-			else { 
-				obstacleFilter_();
-			}
+			filter();
 			for (std::shared_ptr<ChessCase> button : possibleCases_) {
 				button->changeColor(possibleCaseYellow);
 				if (button->getColour() == casePink) {
@@ -117,5 +106,22 @@ bool Controller::filterAdder_(int x, int y) {
 		}
 		possibleCases_.push_back(grid_->findCase(x, y));
 		return false;
+	}
+}
+
+void Controller::knightFilter() {
+	for (auto line : grid_->getListOfCases()) {
+		for (std::shared_ptr<ChessCase> button : line) {
+			filterAdder_(button->getX(), button->getY());
+		}
+	}
+}
+
+void Controller::filter() {
+	if (chosenPiece_->getType() == "Knight") {
+		knightFilter();
+	}
+	else {
+		obstacleFilter_();
 	}
 }

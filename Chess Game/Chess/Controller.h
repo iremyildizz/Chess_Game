@@ -26,6 +26,8 @@ public:
 	~Controller();
 	void click(ChessCase* button);
 	void setGrid(std::shared_ptr<ChessGrid> grid);
+	void knightFilter();
+	void filter();
 
 private:
 	void obstacleFilter_();
