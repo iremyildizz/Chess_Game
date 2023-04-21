@@ -117,3 +117,18 @@ bool Knight::isValidMove(int x, int y) {
 }
 
 std::string Knight::getType() { return "Knight"; }
+
+Pawn::Pawn(Team team, int x, int y) : PieceAbs(team, x, y) {
+	if (team == Team::Lilac) {
+		name_ = "Lilac Pawn";
+		icon_ = lilacPawnIcon;
+	}
+	else {
+		name_ = "Pink Pawn";
+		icon_ = pinkPawnIcon;
+	}
+}
+
+bool Pawn::isValidMove(int x, int y) { return (x == x_ + 1 ) || (x == x_ - 1); }
+
+std::string Pawn::getType() { return "Pawn"; }

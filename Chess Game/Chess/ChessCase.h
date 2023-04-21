@@ -37,6 +37,8 @@ private:
 	int y_;
 	const int lenght_ = 90;
 	const int height_ = 90;
+	const int iconLenght_ = lenght_ - 15;
+	const int iconHeight_ = height_ - 15;
 	std::shared_ptr<PieceAbs> piece_ = nullptr;
 	std::shared_ptr<Controller> controller_ = nullptr;
 	QString colour_;

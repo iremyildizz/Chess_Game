@@ -11,11 +11,10 @@
 
 ChessCase::ChessCase(int newX, int newY, std::shared_ptr<Controller> controller, QWidget* parent): x_(newX), y_(newY), controller_(controller), QPushButton(parent) {
     const QSize BUTTON_SIZE = QSize(lenght_, height_);
-    setIconSize(QSize(lenght_, height_));
+    setIconSize(QSize(iconLenght_, iconHeight_));
     setMinimumSize(BUTTON_SIZE);
     setMaximumSize(BUTTON_SIZE);
     connect(this, SIGNAL(clicked()), this, SLOT(handleButton()));
-    //setText(QString(QString::number(x_)) + "," + (QString::number(y_)));
 }
 
 void ChessCase::setPiece(std::shared_ptr<PieceAbs> piece) {

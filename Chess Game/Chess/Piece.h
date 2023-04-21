@@ -24,6 +24,8 @@ namespace icons {
 	const QString pinkQueenIcon = "./images/Queen_Pink.png";			/*photo by Wikipedia, edited by Irem Yildiz*/
 	const QString lilacKnightIcon = "./images/Knight_Lilac.png";		/*photo by Wikipedia, edited by Irem Yildiz, idea by Berk Yurteri*/
 	const QString pinkKnightIcon = "./images/Knight_Pink.png";			/*photo by Wikipedia, edited by Irem Yildiz, idea by Berk Yurteri*/
+	const QString lilacPawnIcon = "./images/Pawn_Lilac.png";			/*photo by Wikipedia, edited by Irem Yildiz*/
+	const QString pinkPawnIcon = "./images/Pawn_Pink.png";				/*photo by Wikipedia, edited by Irem Yildiz*/
 }
 
 class PieceAbs {
@@ -79,6 +81,13 @@ public:
 class Knight : public PieceAbs {
 public:
 	Knight(Team team, int x, int y);
+	bool isValidMove(int x, int y);
+	std::string getType() override;
+};
+
+class Pawn : public PieceAbs {
+public:
+	Pawn(Team team, int x, int y);
 	bool isValidMove(int x, int y);
 	std::string getType() override;
 };
