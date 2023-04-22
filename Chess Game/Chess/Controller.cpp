@@ -128,6 +128,12 @@ void Controller::pawnFilter() {
 				possibleCases_.erase(possibleCases_.begin() + i);
 				i--;
 			}
+		if (possibleCases_[i]->getPiece() != nullptr) {
+			if (possibleCases_[i]->getY() == chosenPiece_->getY()) {
+				possibleCases_.erase(possibleCases_.begin() + i);
+				i--;
+			}
+		}
 				
 				
 	}
