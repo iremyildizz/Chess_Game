@@ -116,10 +116,21 @@ void Controller::knightFilter() {
 		}
 	}
 }
+void Controller::pawnFilter() {
+	for (auto line : grid_->getListOfCases()) {
+		for (std::shared_ptr<ChessCase> button : line) {
+
+		}
+	}
+}
 
 void Controller::filter() {
 	if (chosenPiece_->getType() == "Knight") {
 		knightFilter();
+	}
+	else if (chosenPiece_->getType() == "Pawn") {
+		obstacleFilter_();
+
 	}
 	else {
 		obstacleFilter_();

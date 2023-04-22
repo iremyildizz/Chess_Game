@@ -129,6 +129,14 @@ Pawn::Pawn(Team team, int x, int y) : PieceAbs(team, x, y) {
 	}
 }
 
-bool Pawn::isValidMove(int x, int y) { return (x == x_ + 1 ) || (x == x_ - 1); }
+bool Pawn::isValidMove(int x, int y) {
+	if (team_ == Team::Lilac) {
+		return (x == x_ + 1);
+	}
+	else {
+		return  (x == x_ - 1); 
+	}
+	
+}
 
 std::string Pawn::getType() { return "Pawn"; }
