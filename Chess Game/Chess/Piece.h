@@ -90,4 +90,8 @@ public:
 	Pawn(Team team, int x, int y);
 	bool isValidMove(int x, int y);
 	std::string getType() override;
+	void setFirstMove(bool);
+	bool getFirstMove();
+private:
+	bool didFirstMove_ = false;
 };

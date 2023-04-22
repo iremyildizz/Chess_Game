@@ -10,6 +10,8 @@
 #include <qmessagebox.h>
 using namespace colors;
 
+
+
 Controller::Controller() {
 
 }
@@ -36,6 +38,9 @@ void Controller::click(ChessCase* button) {
 		for(std::shared_ptr<ChessCase> bttn : possibleCases_){
 			if (chosenPiece_ != button->getPiece() && button == bttn.get() && !chosenPiece_->isSameTeam(button->getPiece())) {
 				button->setPiece(chosenPiece_);
+				if (std::shared_ptr<Pawn> piece = std::dynamic_pointer_cast<Pawn>(chosenPiece_)) {
+					piece->setFirstMove(true);
+				}
 				chosenCase_->deletePiece();
 				break;
 			}
@@ -117,22 +122,25 @@ void Controller::knightFilter() {
 	}
 }
 void Controller::pawnFilter() {
-	for (auto line : grid_->getListOfCases()) {
-		for (std::shared_ptr<ChessCase> button : line) {
-
-		}
+	for (int i = 0; i < possibleCases_.size(); i++) {
+		if (possibleCases_[i]->getPiece() == nullptr)
+			if (possibleCases_[i]->getY() != chosenPiece_->getY()) {
+				possibleCases_.erase(possibleCases_.begin() + i);
+				i--;
+			}
+				
+				
 	}
 }
 
 void Controller::filter() {
 	if (chosenPiece_->getType() == "Knight") {
 		knightFilter();
+		return;
 	}
-	else if (chosenPiece_->getType() == "Pawn") {
-		obstacleFilter_();
-
+	obstacleFilter_();
+	if (chosenPiece_->getType() == "Pawn") {
+		pawnFilter();
 	}
-	else {
-		obstacleFilter_();
-	}
+	
 }
