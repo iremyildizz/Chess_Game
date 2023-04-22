@@ -18,7 +18,8 @@ namespace colors {
 	const QString possibleCase = "rgba(192, 165, 209, 1)";
 	const QString possibleCasePink = "rgba(192, 165, 209, 1)";
 	const QString possibleCaseYellow = "rgba(222, 190, 240, 1)";
-	const QString possiblePawn = "rgba(73, 187, 193, 1)";
+	const QString possiblePawnPink = "rgba(73, 187, 193, 1)";
+	const QString possiblePawnYellow = "rgba(73, 187, 193, 0.5)";
 }
 
 class Controller {

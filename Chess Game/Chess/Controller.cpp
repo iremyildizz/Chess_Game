@@ -31,8 +31,13 @@ void Controller::click(ChessCase* button) {
 				if (button->getColour() == casePink) {
 					button->changeColor(possibleCasePink);
 				}
-				if (button->getPiece() != nullptr)
-					button->changeColor(possiblePawn);
+				if (button->getPiece() != nullptr) {
+					button->changeColor(possiblePawnYellow);
+					if (button->getColour() == casePink) {
+						button->changeColor(possiblePawnPink);
+					}
+				}
+					
 			}
 		}
 	}
