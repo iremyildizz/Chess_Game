@@ -19,6 +19,8 @@ ChessCase::ChessCase(int newX, int newY, std::shared_ptr<Controller> controller,
 
 void ChessCase::setPiece(std::shared_ptr<PieceAbs> piece) {
     piece_ = piece;
+    if (piece == nullptr)
+        return;
     setIcon(QIcon(piece_->getIcon()));
     piece->setPos(x_, y_);
 }
@@ -33,9 +35,10 @@ std::shared_ptr<PieceAbs> ChessCase::getPiece() {
     return piece_;
 }
 
-void ChessCase::deletePiece() {
+std::shared_ptr<PieceAbs> ChessCase::deletePiece() {
+    std::shared_ptr<PieceAbs> oldPiece = std::move(piece_);
     setIcon(QIcon(""));
-    piece_ = nullptr;
+    return oldPiece;
 }
 void ChessCase::changeColor(QString colour) {
     setStyleSheet("background-color:" + (colour) + "; margin: -10px;");

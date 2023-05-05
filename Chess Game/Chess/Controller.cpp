@@ -138,17 +138,28 @@ void Controller::pawnFilter() {
 }
 
 void Controller::filter() {
-	if (chosenPiece_->getType() == "Knight") {
+	if (chosenPiece_->getType() == "Knight")
 		knightFilter();
-		return;
-	}
-	obstacleFilter_();
-	if (chosenPiece_->getType() == "Pawn") {
+	else
+		obstacleFilter_();
+	if (chosenPiece_->getType() == "Pawn")
 		pawnFilter();
-	}
-	
+
+	selfCheckFilter_();
 }
 
 bool Controller::isTurnOfPiece(Team team) {
 	return (isPinkTurn && team == Team::Pink) || (!isPinkTurn && team == Team::Lilac);
+}
+
+void Controller::selfCheckFilter_() {
+	std::shared_ptr<PieceAbs> memoryPiece = nullptr;
+	chosenCase_->deletePiece();
+	for (std::shared_ptr<ChessCase> button : possibleCases_) {
+		memoryPiece = button->deletePiece();
+		button->setPiece(chosenPiece_);
+		//verification
+		button->deletePiece();
+	}
+	chosenCase_->setPiece(chosenPiece_);
 }

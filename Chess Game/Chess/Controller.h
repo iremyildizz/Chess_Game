@@ -35,6 +35,7 @@ public:
 	
 private:
 	void obstacleFilter_();
+	void selfCheckFilter_();
 	bool filterAdder_(int x, int y);
 	std::shared_ptr<PieceAbs> chosenPiece_ = nullptr;
 	ChessCase* chosenCase_ = nullptr;

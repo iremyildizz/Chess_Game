@@ -20,7 +20,7 @@ public:
 	ChessCase() = default;
 	~ChessCase() = default;
 	void setPiece(std::shared_ptr<PieceAbs> piece);
-	void deletePiece();
+	std::shared_ptr<PieceAbs> deletePiece();
 	int getX();
 	int getY();
 	std::shared_ptr<PieceAbs> getPiece();
