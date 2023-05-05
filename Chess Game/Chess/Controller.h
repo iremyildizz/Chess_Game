@@ -28,15 +28,15 @@ public:
 	~Controller();
 	void click(ChessCase* button);
 	void setGrid(std::shared_ptr<ChessGrid> grid);
-	void knightFilter();
-	void pawnFilter();
-	void filter();
+	void knightFilter(std::shared_ptr<PieceAbs> piece, std::vector<std::shared_ptr<ChessCase>>& possibleCases);
+	void pawnFilter(std::shared_ptr<PieceAbs> piece, std::vector<std::shared_ptr<ChessCase>>& possibleCases);
+	void filter(std::shared_ptr<PieceAbs> piece, std::vector<std::shared_ptr<ChessCase>>& possibleCases);
 	bool isTurnOfPiece(Team team);
 	
 private:
-	void obstacleFilter_();
+	void obstacleFilter_(std::shared_ptr<PieceAbs> piece, std::vector<std::shared_ptr<ChessCase>>& possibleCases);
 	void selfCheckFilter_();
-	bool filterAdder_(int x, int y);
+	bool filterAdder_(int x, int y, std::shared_ptr<PieceAbs> piece, std::vector<std::shared_ptr<ChessCase>>& possibleCases);
 	std::shared_ptr<PieceAbs> chosenPiece_ = nullptr;
 	ChessCase* chosenCase_ = nullptr;
 	std::shared_ptr<ChessGrid> grid_ = nullptr;
