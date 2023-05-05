@@ -32,10 +32,12 @@ public:
 	void pawnFilter(std::shared_ptr<PieceAbs> piece, std::vector<std::shared_ptr<ChessCase>>& possibleCases);
 	void filter(std::shared_ptr<PieceAbs> piece, std::vector<std::shared_ptr<ChessCase>>& possibleCases);
 	bool isTurnOfPiece(Team team);
+	bool kingChecked(Team team);
+	bool isCheckMate();
 	
 private:
 	void obstacleFilter_(std::shared_ptr<PieceAbs> piece, std::vector<std::shared_ptr<ChessCase>>& possibleCases);
-	void selfCheckFilter_();
+	void selfCheckFilter_(std::shared_ptr<PieceAbs> piece, ChessCase* button, std::vector<std::shared_ptr<ChessCase>>& possibleCases);
 	bool filterAdder_(int x, int y, std::shared_ptr<PieceAbs> piece, std::vector<std::shared_ptr<ChessCase>>& possibleCases);
 	std::shared_ptr<PieceAbs> chosenPiece_ = nullptr;
 	ChessCase* chosenCase_ = nullptr;

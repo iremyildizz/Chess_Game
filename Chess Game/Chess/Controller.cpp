@@ -26,7 +26,7 @@ void Controller::click(ChessCase* button) {
 			chosenCase_ = button;
 			chosenCase_->changeColor(selectedCase);
 			filter(chosenPiece_,possibleCases_);
-			selfCheckFilter_();
+			selfCheckFilter_(chosenPiece_, chosenCase_, possibleCases_);
 			for (std::shared_ptr<ChessCase> button : possibleCases_) {
 				button->changeColor(possibleCaseYellow);
 				if (button->getColour() == casePink) {
@@ -49,6 +49,21 @@ void Controller::click(ChessCase* button) {
 					piece->setFirstMove(true);
 				}
 				chosenCase_->deletePiece();
+
+				bool isKingChecked = false;
+				if (isPinkTurn) 
+					isKingChecked = kingChecked(Team::Lilac);
+				else
+					isKingChecked = kingChecked(Team::Pink);
+
+				if (isKingChecked) {
+					if (isCheckMate()) {
+						QMessageBox msgBox;
+						msgBox.setText("Checkmate mate!");
+						msgBox.exec();
+					}
+				}
+
 				isPinkTurn = !isPinkTurn;
 				break;
 			}
@@ -151,41 +166,52 @@ bool Controller::isTurnOfPiece(Team team) {
 	return (isPinkTurn && team == Team::Pink) || (!isPinkTurn && team == Team::Lilac);
 }
 
-void Controller::selfCheckFilter_() {
+void Controller::selfCheckFilter_(std::shared_ptr<PieceAbs> piece, ChessCase* button, std::vector<std::shared_ptr<ChessCase>>& possibleCases) {
 	std::shared_ptr<PieceAbs> memoryPiece = nullptr;
-	chosenCase_->deletePiece();
-	for (int i = 0; i < possibleCases_.size(); i++) {
-		memoryPiece = possibleCases_[i]->deletePiece();
-		possibleCases_[i]->setPiece(chosenPiece_);
+	button->deletePiece();
+	for (int i = 0; i < possibleCases.size(); i++) {
+		memoryPiece = possibleCases[i]->deletePiece();
+		possibleCases[i]->setPiece(piece);
 
-		bool isKingChecked = false;
-		for (auto line : grid_->getListOfCases()) {
-			for (std::shared_ptr<ChessCase> button : line) {
-				if (button->getPiece() != nullptr && button->getPiece()->getTeam() != chosenPiece_->getTeam()) {
-					std::vector<std::shared_ptr<ChessCase>> possibleCasesOfPiece;
-					filter(button->getPiece(), possibleCasesOfPiece);
-					for (std::shared_ptr<ChessCase> possibleButton : possibleCasesOfPiece) {
-						if (possibleButton->getPiece() != nullptr && possibleButton->getPiece()->getType() == "King") {
-							isKingChecked = true;
-							break;
-						}
-					}
-				}
-				if (isKingChecked)
-					break;
-			}
-			if (isKingChecked)
-				break;
-		}
-
-
-
-		possibleCases_[i]->deletePiece();
-		possibleCases_[i]->setPiece(memoryPiece);
+		bool isKingChecked = kingChecked(piece->getTeam());
+		
+		possibleCases[i]->deletePiece();
+		possibleCases[i]->setPiece(memoryPiece);
 		if (isKingChecked) {
-			possibleCases_.erase(possibleCases_.begin() + i);
+			possibleCases.erase(possibleCases.begin() + i);
 			i--;
 		}
 	}
-	chosenCase_->setPiece(chosenPiece_);
+	button->setPiece(piece);
+}
+
+bool Controller::kingChecked(Team team) {
+	for (auto line : grid_->getListOfCases()) {
+		for (std::shared_ptr<ChessCase> button : line) {
+			if (button->getPiece() != nullptr && button->getPiece()->getTeam() != team) {
+				std::vector<std::shared_ptr<ChessCase>> possibleCasesOfPiece;
+				filter(button->getPiece(), possibleCasesOfPiece);
+				for (std::shared_ptr<ChessCase> possibleButton : possibleCasesOfPiece) {
+					if (possibleButton->getPiece() != nullptr && possibleButton->getPiece()->getType() == "King") {
+						return true;
+					}
+				}
+			}
+		}
+	}
+}
+
+bool Controller::isCheckMate() {
+	for (auto line : grid_->getListOfCases()) {
+		for (std::shared_ptr<ChessCase> button : line) {
+			if (button->getPiece() != nullptr && button->getPiece()->getTeam() != chosenPiece_->getTeam()) {
+				std::vector<std::shared_ptr<ChessCase>> possibleCasesOfPiece;
+				filter(button->getPiece(), possibleCasesOfPiece);
+				selfCheckFilter_(button->getPiece(), button.get(), possibleCasesOfPiece);
+				if (!possibleCasesOfPiece.empty())
+					return false;
+			}
+		}
+	}
+	return true;
 }
