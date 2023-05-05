@@ -19,9 +19,9 @@ Controller::~Controller() {
 	delete chosenCase_;
 }
 
-void Controller::click(ChessCase* button) {
+void Controller::click(ChessCase* button) { 
 	if(chosenPiece_ == nullptr) {
-		if (button->getPiece() != nullptr) {
+		if (button->getPiece() != nullptr && isTurnOfPiece(button->getPiece()->getTeam())) {
 			chosenPiece_ = button->getPiece();
 			chosenCase_ = button;
 			chosenCase_->changeColor(selectedCase);
@@ -36,8 +36,7 @@ void Controller::click(ChessCase* button) {
 					if (button->getColour() == casePink) {
 						button->changeColor(possiblePawnPink);
 					}
-				}
-					
+				}		
 			}
 		}
 	}
@@ -49,6 +48,7 @@ void Controller::click(ChessCase* button) {
 					piece->setFirstMove(true);
 				}
 				chosenCase_->deletePiece();
+				isPinkTurn = !isPinkTurn;
 				break;
 			}
 		}
@@ -130,19 +130,10 @@ void Controller::knightFilter() {
 }
 void Controller::pawnFilter() {
 	for (int i = 0; i < possibleCases_.size(); i++) {
-		if (possibleCases_[i]->getPiece() == nullptr)
-			if (possibleCases_[i]->getY() != chosenPiece_->getY()) {
-				possibleCases_.erase(possibleCases_.begin() + i);
-				i--;
-			}
-		if (possibleCases_[i]->getPiece() != nullptr) {
-			if (possibleCases_[i]->getY() == chosenPiece_->getY()) {
-				possibleCases_.erase(possibleCases_.begin() + i);
-				i--;
-			}
-		}
-				
-				
+		if ((possibleCases_[i]->getPiece() == nullptr && possibleCases_[i]->getY() != chosenPiece_->getY()) || (possibleCases_[i]->getPiece() != nullptr && possibleCases_[i]->getY() == chosenPiece_->getY())) {
+			possibleCases_.erase(possibleCases_.begin() + i);
+			i--;
+		}		
 	}
 }
 
@@ -156,4 +147,8 @@ void Controller::filter() {
 		pawnFilter();
 	}
 	
+}
+
+bool Controller::isTurnOfPiece(Team team) {
+	return (isPinkTurn && team == Team::Pink) || (!isPinkTurn && team == Team::Lilac);
 }

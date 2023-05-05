@@ -132,19 +132,19 @@ Pawn::Pawn(Team team, int x, int y) : PieceAbs(team, x, y) {
 bool Pawn::isValidMove(int x, int y) {
 	if (didFirstMove_ == false) {
 		if (team_ == Team::Lilac) {
-			return ((x == x_ + 2) || (x == x_ + 1));
+			return ((x == x_ + 2) || (x == x_ + 1)) && ((y <= y_ + 1) && (y >= y_ - 1));
 		}
 		else {
-			return  ((x == x_ - 2) || (x == x_ - 1));
+			return  ((x == x_ - 2) || (x == x_ - 1)) && ((y <= y_ + 1) && (y >= y_ - 1));
 		}
 	}
 	else {
-	if (team_ == Team::Lilac) {
-		return (x == x_ + 1);
-	}
-	else {
-		return  (x == x_ - 1); 
-	}
+		if (team_ == Team::Lilac) {
+			return (x == x_ + 1);
+		}
+		else {
+			return  (x == x_ - 1); 
+		}
 	}
 
 	

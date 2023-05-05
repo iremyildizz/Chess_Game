@@ -31,7 +31,8 @@ public:
 	void knightFilter();
 	void pawnFilter();
 	void filter();
-
+	bool isTurnOfPiece(Team team);
+	
 private:
 	void obstacleFilter_();
 	bool filterAdder_(int x, int y);
@@ -39,4 +40,5 @@ private:
 	ChessCase* chosenCase_ = nullptr;
 	std::shared_ptr<ChessGrid> grid_ = nullptr;
 	std::vector<std::shared_ptr<ChessCase>> possibleCases_;
+	bool isPinkTurn = true;
 };
