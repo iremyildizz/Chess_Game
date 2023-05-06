@@ -2,7 +2,7 @@
 * Chess Game.
 * \file   Piece.cpp
 * \author Irem Yildiz
-* \date   14 avril 2023
+* \date   5 mai 2023
 * Créé le 10 avril 2023
 */
 

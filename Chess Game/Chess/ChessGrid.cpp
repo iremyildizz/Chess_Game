@@ -2,7 +2,7 @@
 * Chess Game.
 * \file   ChessGrid.cpp
 * \author Irem Yildiz
-* \date   14 avril 2023
+* \date   5 mai 2023
 * Créé le 10 avril 2023
 */
 
@@ -36,9 +36,9 @@ void ChessGrid::init() {
             else {
                 if (j % 2 != 0) {
                     button->setBaseColour(caseYellow);
-
                 }
             }
+
             button->changeToBaseColour();
             addWidget(button.get(), i, j, 1, 1);
             caseRow.push_back(button);
@@ -53,8 +53,21 @@ void ChessGrid::addPieces(std::vector<std::shared_ptr<PieceAbs>> pieces) {
         listOfPieces_.push_back(piece);
     }
 }
+
 std::vector<std::vector<std::shared_ptr<ChessCase>>> ChessGrid::getListOfCases() { return listOfCases_; }
 
 std::shared_ptr<ChessCase> ChessGrid::findCase(int x, int y) {
     return listOfCases_[x][y];
+}
+
+void ChessGrid::clearBoard_() {
+    for (std::shared_ptr<PieceAbs> piece : listOfPieces_) {
+        findCase(piece->getX(), piece->getY())->deletePiece();
+    }
+    listOfPieces_.clear();
+}
+
+void ChessGrid::recreateBoard(std::vector<std::shared_ptr<PieceAbs>> game) {
+    clearBoard_();
+    addPieces(game);
 }

@@ -2,7 +2,7 @@
 * Chess Game.
 * \file   ChessCase.cpp
 * \author Irem Yildiz
-* \date   14 avril 2023
+* \date   5 mai 2023
 * Créé le 10 avril 2023
 */
 
@@ -47,4 +47,5 @@ void ChessCase::changeColor(QString colour) {
 void ChessCase::setBaseColour(QString colour) { colour_ = colour; }
 
 void ChessCase::changeToBaseColour() { changeColor(colour_); }
+
 QString ChessCase::getColour() { return colour_; }
